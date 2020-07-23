@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ecommerce-shop-91fe3": {
+      "hosting": {
+        "ecommerce-shop": [
+          "ecommerce-shop-91fe3"
+        ]
+      }
+    }
+  }
+}
