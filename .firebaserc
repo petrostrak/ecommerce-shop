@@ -7,5 +7,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "default": "ecommerce-shop-91fe3"
   }
 }
