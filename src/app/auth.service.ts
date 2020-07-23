@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppUser } from './models/app-user';
 import { UserService } from './user.service';
 import { switchMap } from 'rxjs/operators';
+import 'rxjs/add/observable/of';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,11 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
-  get appUser$(): Observable<AppUser>{
-    return this.user$.pipe(switchMap(user => this.userService.get(user.uid).valueChanges()))
+  get appUser$(): Observable<AppUser> {
+    return this.user$.pipe(switchMap(user => {
+      if(user) return this.userService.get(user.uid).valueChanges();
+      
+      return Observable.of(null);
+    }))
   }
 }
